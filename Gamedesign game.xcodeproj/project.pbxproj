@@ -16,6 +16,7 @@
 		F58614AC22A9535D0044B067 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614AB22A9535D0044B067 /* Square.swift */; };
 		F58614AE22A953ED0044B067 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614AD22A953ED0044B067 /* Triangle.swift */; };
 		F58614B122A956EE0044B067 /* SizeOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614B022A956EE0044B067 /* SizeOf.swift */; };
+		F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F58614B322A95FCF0044B067 /* default_shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		F58614AB22A9535D0044B067 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		F58614AD22A953ED0044B067 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		F58614B022A956EE0044B067 /* SizeOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOf.swift; sourceTree = "<group>"; };
+		F58614B322A95FCF0044B067 /* default_shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = default_shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		F548D89322A920D80042A134 /* Gamedesign game */ = {
 			isa = PBXGroup;
 			children = (
+				F58614B222A95FB40044B067 /* Shaders */,
 				F58614A722A952440044B067 /* Storyboards */,
 				F58614A622A9522A0044B067 /* Source */,
 				F548D89822A920D90042A134 /* Assets.xcassets */,
@@ -116,6 +119,14 @@
 				F58614B022A956EE0044B067 /* SizeOf.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F58614B222A95FB40044B067 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				F58614B322A95FCF0044B067 /* default_shaders.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +203,7 @@
 				F548D8A522A924D30042A134 /* MainViewController.swift in Sources */,
 				F548D89722A920D80042A134 /* MetalView.swift in Sources */,
 				F58614AE22A953ED0044B067 /* Triangle.swift in Sources */,
+				F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */,
 				F548D89522A920D80042A134 /* AppDelegate.swift in Sources */,
 				F58614A922A9530D0044B067 /* Drawable.swift in Sources */,
 				F58614B122A956EE0044B067 /* SizeOf.swift in Sources */,

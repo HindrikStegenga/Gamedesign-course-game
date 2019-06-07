@@ -31,11 +31,11 @@ protocol Drawable {
 extension Drawable {
     
     func create_vertex_buffer(device: MTLDevice) -> MTLBuffer? {
-        return device.makeBuffer(length: sizeof(vertex_buffer_source), options: [])
+        return device.makeBuffer(bytes: vertex_buffer_source, length: sizeof(vertex_buffer_source), options: [])
     }
     
     func create_index_buffer(device: MTLDevice) -> MTLBuffer? {
-        return device.makeBuffer(length: sizeof(index_buffer_source), options: [])
+        return device.makeBuffer(bytes: index_buffer_source, length: sizeof(index_buffer_source), options: [])
     }
     
     func create_render_pipeline_state(device: MTLDevice) -> MTLRenderPipelineState? {

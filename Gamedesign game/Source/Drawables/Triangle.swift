@@ -10,8 +10,8 @@ import Foundation
 import Metal
 
 class Triangle : Drawable {
-    var vertex_func_name: String = "default_vertex"
-    var fragment_func_name: String = "default_fragment"
+    var vertex_func_name: String = "default_vertex_func"
+    var fragment_func_name: String = "default_fragment_func"
     
     var vertex_buffer: MTLBuffer! = nil
     var index_buffer: MTLBuffer! = nil

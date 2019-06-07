@@ -44,6 +44,10 @@ class MetalView: MTKView {
             return
         }
         
+        rpd.colorAttachments[0].texture = currentDrawable.texture
+        rpd.colorAttachments[0].clearColor = self.clearColor
+        rpd.colorAttachments[0].loadAction = .clear
+        
         guard let commandBuffer = defaultCommandQueue.makeCommandBuffer() else {
             print("Error occurred fetching commandbuffer.")
             return

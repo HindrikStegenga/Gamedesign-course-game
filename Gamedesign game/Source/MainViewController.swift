@@ -15,6 +15,9 @@ class MainViewController : NSViewController {
         guard let windowContent = self.view as? MetalView else {
             fatalError("Failure")
         }
+        
+        windowContent.drawables.append(Triangle())
+        
         windowContent.initalizeMTL()
     }
 }
