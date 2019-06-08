@@ -22,3 +22,18 @@ func sizeof <T> (_ value : [T]) -> Int
 {
     return (MemoryLayout<T>.size * value.count)
 }
+
+func strideof <T> (_ : T.Type) -> Int
+{
+    return (MemoryLayout<T>.stride)
+}
+
+func strideof <T> (_ : T) -> Int
+{
+    return (MemoryLayout<T>.stride)
+}
+
+func strideof <T> (_ value : [T]) -> Int
+{
+    return (MemoryLayout<T>.stride * value.count)
+}

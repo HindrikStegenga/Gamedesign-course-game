@@ -11,12 +11,32 @@ using namespace metal;
 
 struct Vertex {
     float4 position [[position]];
+    float2 texture_coord;
+    float2 padding;
 };
 
-vertex Vertex default_vertex_func(constant Vertex *vertices [[buffer(0)]], uint vid [[vertex_id]]) {
-    return vertices[vid];
+struct UniformBuffer {
+    float4x4 modelMatrix;
+};
+
+vertex Vertex default_vertex_func(constant Vertex *vertices [[buffer(0)]],
+                                  constant UniformBuffer &uniforms [[buffer(1)]],
+                                  uint vid [[vertex_id]]) {
+    
+    
+    
+    float4x4 matrix = uniforms.modelMatrix;
+    Vertex in = vertices[vid];
+    Vertex out;
+    out.position = matrix * float4(in.position);
+    out.texture_coord = in.texture_coord;
+    return out;
 }
 
 fragment float4 default_fragment_func(Vertex vert [[stage_in]]) {
-    return float4(0.7, 1, 1, 1);
+    float2 uv = vert.texture_coord;
+    uv = uv * 2.0 - 1.0;
+    bool inside = length(uv) < 0.5;
+    
+    return inside ? float4(0) : float4(1, 1, 0, 1);
 }

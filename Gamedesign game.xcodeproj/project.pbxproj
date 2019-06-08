@@ -7,30 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700C29E75DBB58ED027BF714 /* FloatArrayConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C209A18758BE953BAF319 /* FloatArrayConvertible.swift */; };
+		F5378DC922ABCB740003983E /* Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DC822ABCB740003983E /* Primitives.swift */; };
+		F5378DCD22ABEC970003983E /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DCC22ABEC970003983E /* Matrix.swift */; };
+		F5378DCF22ABFAFB0003983E /* MTLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DCE22ABFAFB0003983E /* MTLRenderer.swift */; };
+		F5378DD122ABFF650003983E /* MTLDrawable2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DD022ABFF650003983E /* MTLDrawable2D.swift */; };
+		F5378DD422AC112B0003983E /* DefaultUniformBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DD322AC112B0003983E /* DefaultUniformBuffer.swift */; };
+		F5378DD722AC1A8D0003983E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DD622AC1A8D0003983E /* MainView.swift */; };
+		F53A338422AAF9C1009CB02B /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A338322AAF9C1009CB02B /* Vertex.swift */; };
+		F53A338622AB00E1009CB02B /* Drawable2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A338522AB00E1009CB02B /* Drawable2D.swift */; };
 		F548D89522A920D80042A134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548D89422A920D80042A134 /* AppDelegate.swift */; };
-		F548D89722A920D80042A134 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548D89622A920D80042A134 /* MetalView.swift */; };
 		F548D89922A920D90042A134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F548D89822A920D90042A134 /* Assets.xcassets */; };
 		F548D89C22A920D90042A134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F548D89A22A920D90042A134 /* Main.storyboard */; };
 		F548D8A522A924D30042A134 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548D8A422A924D30042A134 /* MainViewController.swift */; };
-		F58614A922A9530D0044B067 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614A822A9530D0044B067 /* Drawable.swift */; };
-		F58614AC22A9535D0044B067 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614AB22A9535D0044B067 /* Square.swift */; };
-		F58614AE22A953ED0044B067 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614AD22A953ED0044B067 /* Triangle.swift */; };
 		F58614B122A956EE0044B067 /* SizeOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614B022A956EE0044B067 /* SizeOf.swift */; };
 		F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F58614B322A95FCF0044B067 /* default_shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		700C209A18758BE953BAF319 /* FloatArrayConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatArrayConvertible.swift; sourceTree = "<group>"; };
+		F5378DC822ABCB740003983E /* Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitives.swift; sourceTree = "<group>"; };
+		F5378DCC22ABEC970003983E /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		F5378DCE22ABFAFB0003983E /* MTLRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLRenderer.swift; sourceTree = "<group>"; };
+		F5378DD022ABFF650003983E /* MTLDrawable2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLDrawable2D.swift; sourceTree = "<group>"; };
+		F5378DD322AC112B0003983E /* DefaultUniformBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUniformBuffer.swift; sourceTree = "<group>"; };
+		F5378DD622AC1A8D0003983E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F53A338322AAF9C1009CB02B /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
+		F53A338522AB00E1009CB02B /* Drawable2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable2D.swift; sourceTree = "<group>"; };
 		F548D89122A920D80042A134 /* Gamedesign game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gamedesign game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F548D89422A920D80042A134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F548D89622A920D80042A134 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		F548D89822A920D90042A134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F548D89B22A920D90042A134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F548D89D22A920D90042A134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F548D89E22A920D90042A134 /* Gamedesign_game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gamedesign_game.entitlements; sourceTree = "<group>"; };
 		F548D8A422A924D30042A134 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F58614A822A9530D0044B067 /* Drawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
-		F58614AB22A9535D0044B067 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
-		F58614AD22A953ED0044B067 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		F58614B022A956EE0044B067 /* SizeOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOf.swift; sourceTree = "<group>"; };
 		F58614B322A95FCF0044B067 /* default_shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = default_shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +56,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5378DD222AC10FC0003983E /* MTL */ = {
+			isa = PBXGroup;
+			children = (
+				F5378DCE22ABFAFB0003983E /* MTLRenderer.swift */,
+				F5378DD022ABFF650003983E /* MTLDrawable2D.swift */,
+			);
+			path = MTL;
+			sourceTree = "<group>";
+		};
+		F5378DD522AC1A6C0003983E /* ViewControllers and Views */ = {
+			isa = PBXGroup;
+			children = (
+				F548D8A422A924D30042A134 /* MainViewController.swift */,
+				F5378DD622AC1A8D0003983E /* MainView.swift */,
+			);
+			path = "ViewControllers and Views";
+			sourceTree = "<group>";
+		};
 		F548D88822A920D80042A134 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +95,7 @@
 			children = (
 				F58614B222A95FB40044B067 /* Shaders */,
 				F58614A722A952440044B067 /* Storyboards */,
+				F5378DD522AC1A6C0003983E /* ViewControllers and Views */,
 				F58614A622A9522A0044B067 /* Source */,
 				F548D89822A920D90042A134 /* Assets.xcassets */,
 				F548D89D22A920D90042A134 /* Info.plist */,
@@ -75,22 +104,13 @@
 			path = "Gamedesign game";
 			sourceTree = "<group>";
 		};
-		F58614A022A949E00044B067 /* Metal */ = {
-			isa = PBXGroup;
-			children = (
-				F548D89622A920D80042A134 /* MetalView.swift */,
-			);
-			path = Metal;
-			sourceTree = "<group>";
-		};
 		F58614A622A9522A0044B067 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F5378DD222AC10FC0003983E /* MTL */,
 				F58614AF22A956DD0044B067 /* Utilities */,
 				F58614AA22A953130044B067 /* Drawables */,
 				F548D89422A920D80042A134 /* AppDelegate.swift */,
-				F548D8A422A924D30042A134 /* MainViewController.swift */,
-				F58614A022A949E00044B067 /* Metal */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -106,9 +126,8 @@
 		F58614AA22A953130044B067 /* Drawables */ = {
 			isa = PBXGroup;
 			children = (
-				F58614A822A9530D0044B067 /* Drawable.swift */,
-				F58614AB22A9535D0044B067 /* Square.swift */,
-				F58614AD22A953ED0044B067 /* Triangle.swift */,
+				F53A338522AB00E1009CB02B /* Drawable2D.swift */,
+				F5378DC822ABCB740003983E /* Primitives.swift */,
 			);
 			path = Drawables;
 			sourceTree = "<group>";
@@ -116,7 +135,11 @@
 		F58614AF22A956DD0044B067 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F53A338322AAF9C1009CB02B /* Vertex.swift */,
 				F58614B022A956EE0044B067 /* SizeOf.swift */,
+				F5378DCC22ABEC970003983E /* Matrix.swift */,
+				F5378DD322AC112B0003983E /* DefaultUniformBuffer.swift */,
+				700C209A18758BE953BAF319 /* FloatArrayConvertible.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -199,14 +222,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F58614AC22A9535D0044B067 /* Square.swift in Sources */,
+				F5378DD122ABFF650003983E /* MTLDrawable2D.swift in Sources */,
+				F5378DD722AC1A8D0003983E /* MainView.swift in Sources */,
 				F548D8A522A924D30042A134 /* MainViewController.swift in Sources */,
-				F548D89722A920D80042A134 /* MetalView.swift in Sources */,
-				F58614AE22A953ED0044B067 /* Triangle.swift in Sources */,
+				F53A338422AAF9C1009CB02B /* Vertex.swift in Sources */,
 				F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */,
+				F5378DD422AC112B0003983E /* DefaultUniformBuffer.swift in Sources */,
 				F548D89522A920D80042A134 /* AppDelegate.swift in Sources */,
-				F58614A922A9530D0044B067 /* Drawable.swift in Sources */,
+				F5378DCF22ABFAFB0003983E /* MTLRenderer.swift in Sources */,
+				F5378DCD22ABEC970003983E /* Matrix.swift in Sources */,
 				F58614B122A956EE0044B067 /* SizeOf.swift in Sources */,
+				F53A338622AB00E1009CB02B /* Drawable2D.swift in Sources */,
+				F5378DC922ABCB740003983E /* Primitives.swift in Sources */,
+				700C29E75DBB58ED027BF714 /* FloatArrayConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

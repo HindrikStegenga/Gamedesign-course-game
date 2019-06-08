@@ -1,0 +1,95 @@
+//
+//  MTLDrawable2D.swift
+//  Gamedesign game
+//
+//  Created by Hindrik Stegenga on 08/06/2019.
+//  Copyright © 2019 Hindrik Stegenga. All rights reserved.
+//
+
+import Foundation
+import Metal
+
+class MTLDrawable2D {
+    
+    let device: MTLDevice
+    let library: MTLLibrary
+    
+    let vertex_function: MTLFunction
+    let fragment_function: MTLFunction
+    let vertex_buffer: MTLBuffer
+    let index_buffer: MTLBuffer
+    let index_count: Int
+    let uniform_buffer: MTLBuffer
+    
+    private lazy var pipeline_state: MTLRenderPipelineState = {
+        
+        let pplDescriptor = MTLRenderPipelineDescriptor()
+        pplDescriptor.vertexFunction = vertex_function
+        pplDescriptor.fragmentFunction = fragment_function
+        
+        pplDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        
+        guard let ps = try? device.makeRenderPipelineState(descriptor: pplDescriptor) else {
+            fatalError("Cannot create pipeline state.")
+        }
+        return ps
+    }()
+    
+    init(device: MTLDevice, library: MTLLibrary, drawable: inout Drawable2D) {
+        self.device = device
+        self.library = library
+        
+        self.vertex_buffer = MTLDrawable2D.create_vertex_buffer(device, &drawable)
+        self.index_buffer = MTLDrawable2D.create_index_buffer(device, &drawable)
+        self.index_count = drawable.index_buffer_source.count
+        
+        self.uniform_buffer = MTLDrawable2D.create_uniform_buffer(device, &drawable)
+        
+        self.vertex_function = MTLDrawable2D.create_vertex_function(library, &drawable)
+        self.fragment_function = MTLDrawable2D.create_fragment_function(library, &drawable)
+        
+    }
+ 
+    func draw(_ encoder: MTLRenderCommandEncoder) {
+        encoder.setRenderPipelineState(pipeline_state)
+        encoder.setVertexBuffer(vertex_buffer, offset: 0, index: 0)
+        encoder.setVertexBuffer(uniform_buffer, offset: 0, index: 1)
+        encoder.drawIndexedPrimitives(type: .triangleStrip, indexCount: index_count, indexType: .uint16, indexBuffer: index_buffer, indexBufferOffset: 0)
+    }
+    
+    static func create_vertex_buffer(_ device: MTLDevice, _ drawable: inout Drawable2D) -> MTLBuffer {
+        guard let buff = device.makeBuffer(bytes: drawable.vertex_buffer_source.floatArray, length: sizeof(drawable.vertex_buffer_source.floatArray), options: [.storageModeManaged]) else {
+            fatalError("Cannot create vertex buffer!")
+        }
+        return buff
+    }
+    
+    static func create_index_buffer(_ device: MTLDevice, _ drawable: inout Drawable2D) -> MTLBuffer {
+        guard let buff = device.makeBuffer(bytes: drawable.index_buffer_source, length: sizeof(drawable.index_buffer_source), options: [.storageModeManaged]) else {
+            fatalError("Cannot create index buffer!")
+        }
+        return buff
+    }
+    
+    static func create_uniform_buffer(_ device: MTLDevice, _ drawable: inout Drawable2D) -> MTLBuffer {
+        guard let buff = device.makeBuffer(bytes: drawable.uniform_buffer_source.floatArray, length: sizeof(drawable.uniform_buffer_source.floatArray), options: [.storageModeManaged]) else {
+            fatalError("Cannot create unfiform buffer!")
+        }
+        return buff
+    }
+    
+    static func create_vertex_function(_ library: MTLLibrary, _ drawable: inout Drawable2D) -> MTLFunction {
+        guard let f = library.makeFunction(name: drawable.vertex_func_name) else {
+            fatalError("Cannot create vertex function!")
+        }
+        return f
+    }
+    
+    static func create_fragment_function(_ library: MTLLibrary, _ drawable: inout Drawable2D) -> MTLFunction {
+        guard let f = library.makeFunction(name: drawable.fragment_func_name) else {
+            fatalError("Cannot create fragment function!")
+        }
+        return f
+    }
+    
+}
