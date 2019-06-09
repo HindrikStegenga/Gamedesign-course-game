@@ -14,11 +14,18 @@ class MTLRenderer : NSObject, MTKViewDelegate {
     
     var drawables: [(Drawable2D, MTLDrawable2D)] = []
     
+    // This keeps track of the system time of the last render
+    var lastRenderTime: CFTimeInterval? = nil
+    // This is the current time in our app, starting at 0, in units of seconds
+    var currentTime: Double = 0
+    
+    var updateClosure: ((CFTimeInterval)->())? = nil
+    
     let mtkView: MTKView!
     let device: MTLDevice!
     let defaultCommandQueue: MTLCommandQueue!
     let library: MTLLibrary!
-    
+    let uniformUpdateSemaphore = DispatchSemaphore(value: 1)
     
     init(mtkView: MTKView) {
         self.mtkView = mtkView
@@ -49,6 +56,12 @@ class MTLRenderer : NSObject, MTKViewDelegate {
     
     func draw(in view: MTKView) {
         
+        // Compute dt
+        let systemTime = CACurrentMediaTime()
+        let timeDifference = (lastRenderTime == nil) ? 0 : (systemTime - lastRenderTime!)
+        // Save this system time
+        lastRenderTime = systemTime
+        
         guard let rpd = view.currentRenderPassDescriptor, let currentDrawable = view.currentDrawable else {
             print("Error occurred fetching rpd and drawable.")
             return
@@ -68,15 +81,25 @@ class MTLRenderer : NSObject, MTKViewDelegate {
             return
         }
         
+        uniformUpdateSemaphore.wait()
+        updateClosure?(timeDifference)
+        
         for drawable in drawables {
+            
+            //Uniform buf is directly mapped in host memory, so no need to notify device.
+            let ptr = drawable.1.uniform_buffer.contents()
+            memcpy(ptr, drawable.0.uniform_buffer_source.floatArray, sizeof(drawable.0.uniform_buffer_source.floatArray))
+            
             drawable.1.draw(encoder)
         }
         
         encoder.endEncoding()
         commandBuffer.present(currentDrawable)
+        commandBuffer.addCompletedHandler() {
+            _ in
+            self.uniformUpdateSemaphore.signal()
+        }
         commandBuffer.commit()
-        commandBuffer.waitUntilCompleted()
-        
     }
     
     func addDrawable(drawable: Drawable2D) {

@@ -9,3 +9,22 @@
 import Foundation
 import Cocoa
 import MetalKit
+
+class MainView : NSView {
+    
+    var keyDownDelegate: ((NSEvent)->())! = nil
+    var keyUpDelegate: ((NSEvent)->())! = nil
+    
+    override func keyDown(with event: NSEvent) {
+        keyDownDelegate?(event)
+    }
+    
+    override func keyUp(with event: NSEvent) {
+        keyUpDelegate?(event)
+    }
+    
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+    
+}

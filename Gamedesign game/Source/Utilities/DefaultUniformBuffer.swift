@@ -13,12 +13,16 @@ import simd
 class DefaultUniformBuffer {
     
     var matrix: Matrix = Matrix()
+    var color: simd_float4 = [1,1,1,1]
 }
 
 extension DefaultUniformBuffer : FloatArrayConvertible {
     var floatArray: [Float] {
         get {
-            return matrix.m
+            var result = matrix.m
+            result.append(contentsOf: [color.x, color.y, color.z, color.w])
+
+            return result
         }
     }
 }

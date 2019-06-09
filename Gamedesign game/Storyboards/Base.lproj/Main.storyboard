@@ -64,15 +64,12 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="800" height="600"/>
+                        <rect key="contentRect" x="196" y="240" width="928" height="700"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="800" height="600"/>
-                        <value key="maxSize" type="size" width="800" height="600"/>
-                        <value key="minFullScreenContentSize" type="size" width="800" height="600"/>
-                        <value key="maxFullScreenContentSize" type="size" width="800" height="600"/>
+                        <value key="minSize" type="size" width="928" height="700"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -90,14 +87,14 @@
             <objects>
                 <viewController title="Gamedesign game" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="MainViewController" customModule="Gamedesign_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl" customClass="MainView" customModule="Gamedesign_game" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="928" height="700"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="i1j-Q3-ueF" userLabel="Right bar">
-                                <rect key="frame" x="672" y="0.0" width="128" height="560"/>
+                                <rect key="frame" x="800" y="0.0" width="128" height="660"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frO-6b-mgG">
-                                        <rect key="frame" x="24" y="512" width="81" height="32"/>
+                                        <rect key="frame" x="24" y="612" width="81" height="32"/>
                                         <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pgg-rf-Nam">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -109,11 +106,24 @@
                                     <constraint firstAttribute="width" constant="128" id="wxF-xl-Wzp"/>
                                 </constraints>
                             </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-Rg-WfS" userLabel="Render View" customClass="MTKView">
-                                <rect key="frame" x="0.0" y="0.0" width="672" height="560"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-Rg-WfS" userLabel="Render View">
+                                <rect key="frame" x="4" y="4" width="792" height="652"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2wT-fK-U8h" customClass="MTKView">
+                                        <rect key="frame" x="70" y="0.0" width="652" height="652"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="2wT-fK-U8h" secondAttribute="height" multiplier="1:1" id="RRI-mg-UFz"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2wT-fK-U8h" firstAttribute="centerX" secondItem="Rzl-Rg-WfS" secondAttribute="centerX" id="3va-bI-yTx"/>
+                                    <constraint firstItem="2wT-fK-U8h" firstAttribute="height" secondItem="Rzl-Rg-WfS" secondAttribute="height" id="FhN-7Q-jf2"/>
+                                    <constraint firstItem="2wT-fK-U8h" firstAttribute="centerY" secondItem="Rzl-Rg-WfS" secondAttribute="centerY" id="bbZ-hn-6GW"/>
+                                </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="zLR-Yp-n9S" userLabel="Top bar">
-                                <rect key="frame" x="0.0" y="560" width="800" height="40"/>
+                                <rect key="frame" x="0.0" y="660" width="928" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="W3g-Wx-JET"/>
                                 </constraints>
@@ -121,27 +131,28 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="frO-6b-mgG" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="60" id="7B0-45-jmc"/>
-                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="96g-Gr-MqT"/>
+                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="4" id="96g-Gr-MqT"/>
                             <constraint firstAttribute="trailing" secondItem="zLR-Yp-n9S" secondAttribute="trailing" id="9lB-76-hfE"/>
                             <constraint firstAttribute="bottom" secondItem="i1j-Q3-ueF" secondAttribute="bottom" id="HSG-Hv-adP"/>
-                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" id="Hbc-CN-ytq"/>
+                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" constant="4" id="Hbc-CN-ytq"/>
                             <constraint firstItem="zLR-Yp-n9S" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="JQU-G1-t3O"/>
                             <constraint firstItem="i1j-Q3-ueF" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" id="YyR-uQ-mmX"/>
                             <constraint firstItem="zLR-Yp-n9S" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="feH-a4-1MI"/>
                             <constraint firstAttribute="trailing" secondItem="i1j-Q3-ueF" secondAttribute="trailing" id="k2w-Gl-MHi"/>
-                            <constraint firstAttribute="bottom" secondItem="Rzl-Rg-WfS" secondAttribute="bottom" id="l86-Tr-gjn"/>
-                            <constraint firstItem="i1j-Q3-ueF" firstAttribute="leading" secondItem="Rzl-Rg-WfS" secondAttribute="trailing" id="vQf-wo-0Z3"/>
+                            <constraint firstAttribute="bottom" secondItem="Rzl-Rg-WfS" secondAttribute="bottom" constant="4" id="l86-Tr-gjn"/>
+                            <constraint firstItem="i1j-Q3-ueF" firstAttribute="leading" secondItem="Rzl-Rg-WfS" secondAttribute="trailing" constant="4" id="vQf-wo-0Z3"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mtkView" destination="Rzl-Rg-WfS" id="sSj-Cl-V80"/>
+                        <outlet property="mainView" destination="m2S-Jp-Qdl" id="3rA-7g-LiP"/>
+                        <outlet property="mtkView" destination="2wT-fK-U8h" id="ww9-a4-EbK"/>
                         <outlet property="rightBar" destination="i1j-Q3-ueF" id="Dvq-8d-dGl"/>
                         <outlet property="topBar" destination="zLR-Yp-n9S" id="qgk-lX-ci6"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1033"/>
+            <point key="canvasLocation" x="75" y="1179"/>
         </scene>
     </scenes>
 </document>

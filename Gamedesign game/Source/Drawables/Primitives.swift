@@ -18,7 +18,7 @@ extension Drawable2D {
         vertices.append(contentsOf: Vertex(position: [1.0, -1.0, 0.0, 1.0], texture_coord: [0.5, 0.0]).values)
         vertices.append(contentsOf: Vertex(position: [0.0, 1.0, 0.0, 1.0], texture_coord: [1.0, 1.0]).values)
         
-        return Drawable2D(position: (0.0 ,0.0), rotation: 0.0, vertices: vertices, indices: [
+        return Drawable2D(position: (0.0 ,0.0), rotation: 0.0, scale: 1.0, vertices: vertices, indices: [
                 0,1,2
             ], uniform: DefaultUniformBuffer())
     }
@@ -30,7 +30,7 @@ extension Drawable2D {
         vertices.append(contentsOf: Vertex(position: [1.0, 1.0, 0.0, 1.0], texture_coord: [1.0, 0.0]).values)
         vertices.append(contentsOf: Vertex(position: [-1.0, 1.0, 0.0, 1.0], texture_coord: [0.0, 0.0]).values)
         
-        return Drawable2D(position: (0.0 ,0.0), rotation: 0.0, vertices: vertices, indices: [
+        return Drawable2D(position: (0.0 ,0.0), rotation: 0.0, scale: 1.0, vertices: vertices, indices: [
                 0,1,2,2,0,3
             ], uniform: DefaultUniformBuffer())
     }

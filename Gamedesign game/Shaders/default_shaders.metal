@@ -17,14 +17,13 @@ struct Vertex {
 
 struct UniformBuffer {
     float4x4 modelMatrix;
+    float4 color;
 };
 
 vertex Vertex default_vertex_func(constant Vertex *vertices [[buffer(0)]],
                                   constant UniformBuffer &uniforms [[buffer(1)]],
                                   uint vid [[vertex_id]]) {
-    
-    
-    
+
     float4x4 matrix = uniforms.modelMatrix;
     Vertex in = vertices[vid];
     Vertex out;
@@ -33,10 +32,10 @@ vertex Vertex default_vertex_func(constant Vertex *vertices [[buffer(0)]],
     return out;
 }
 
-fragment float4 default_fragment_func(Vertex vert [[stage_in]]) {
+fragment float4 default_fragment_func(Vertex vert [[stage_in]], constant UniformBuffer &uniforms [[buffer(0)]]) {
     float2 uv = vert.texture_coord;
     uv = uv * 2.0 - 1.0;
     bool inside = length(uv) < 0.5;
     
-    return inside ? float4(0) : float4(1, 1, 0, 1);
+    return inside ? float4(0) : uniforms.color;
 }

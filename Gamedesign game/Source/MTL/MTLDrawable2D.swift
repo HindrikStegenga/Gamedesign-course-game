@@ -49,11 +49,12 @@ class MTLDrawable2D {
         self.fragment_function = MTLDrawable2D.create_fragment_function(library, &drawable)
         
     }
- 
+    
     func draw(_ encoder: MTLRenderCommandEncoder) {
         encoder.setRenderPipelineState(pipeline_state)
         encoder.setVertexBuffer(vertex_buffer, offset: 0, index: 0)
         encoder.setVertexBuffer(uniform_buffer, offset: 0, index: 1)
+        encoder.setFragmentBuffer(uniform_buffer, offset: 0, index: 0)
         encoder.drawIndexedPrimitives(type: .triangleStrip, indexCount: index_count, indexType: .uint16, indexBuffer: index_buffer, indexBufferOffset: 0)
     }
     
@@ -72,7 +73,7 @@ class MTLDrawable2D {
     }
     
     static func create_uniform_buffer(_ device: MTLDevice, _ drawable: inout Drawable2D) -> MTLBuffer {
-        guard let buff = device.makeBuffer(bytes: drawable.uniform_buffer_source.floatArray, length: sizeof(drawable.uniform_buffer_source.floatArray), options: [.storageModeManaged]) else {
+        guard let buff = device.makeBuffer(bytes: drawable.uniform_buffer_source.floatArray, length: sizeof(drawable.uniform_buffer_source.floatArray), options: [.storageModeShared]) else {
             fatalError("Cannot create unfiform buffer!")
         }
         return buff

@@ -16,3 +16,11 @@ extension Array : FloatArrayConvertible where Element == Float  {
         }
     }
 }
+
+extension Float {
+    
+    public static func remap (_ value: Float, _ from1: Float, _ to1: Float, _ from2: Float, _ to2: Float) -> Float {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+    
+}
