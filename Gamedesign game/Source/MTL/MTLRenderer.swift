@@ -107,4 +107,8 @@ class MTLRenderer : NSObject, MTKViewDelegate {
         let mtlDrawable = MTLDrawable2D(device: device, library: library, drawable: &drawable)
         drawables.append((drawable, mtlDrawable))
     }
+    
+    func clearDrawables() {
+        drawables.removeAll()
+    }
 }

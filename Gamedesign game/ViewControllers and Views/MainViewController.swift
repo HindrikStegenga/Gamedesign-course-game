@@ -21,6 +21,7 @@ class MainViewController : NSViewController {
     var mtlRenderer: MTLRenderer!
     var playerDrawable: Drawable2D!
     var gridSize: Int = 50
+    var accelerationFactor: Float = 3.33
     
     var pressedUp: Bool = false
     var pressedDown: Bool = false
@@ -37,6 +38,11 @@ class MainViewController : NSViewController {
         
         self.mtlRenderer = MTLRenderer(mtkView: mtkView)
         self.mtlRenderer.updateClosure = self.update
+        setupWorld()
+    }
+    
+    func reset() {
+        mtlRenderer.clearDrawables()
         setupWorld()
     }
     
@@ -97,22 +103,36 @@ class MainViewController : NSViewController {
     func update(dt: CFTimeInterval) {
         
         let pos = playerDrawable.position
-        let acceleration : Float = 15.0
+        let acceleration : Float = Float(gridSize) / accelerationFactor
+        
+        let upperBound = gridSize - 3;
+        let lowerBound = 2;
+        let leftBound = 2;
+        let rightBound = gridSize - 3;
+        
         
         if pressedUp {
-            playerDrawable.position.y = pos.y + acceleration * Float(dt)
+            if pos.y < Float(upperBound) {
+                playerDrawable.position.y = pos.y + acceleration * Float(dt)
+            }
             playerDrawable.rotation = 0.0
         }
         if pressedDown {
-            playerDrawable.position.y = pos.y - acceleration * Float(dt)
+            if pos.y > Float(lowerBound) {
+                playerDrawable.position.y = pos.y - acceleration * Float(dt)
+            }
             playerDrawable.rotation = 3.14
         }
         if pressedLeft {
-            playerDrawable.position.x = pos.x - acceleration * Float(dt)
+            if pos.x > Float(leftBound) {
+                playerDrawable.position.x = pos.x - acceleration * Float(dt)
+            }
             playerDrawable.rotation = 3.14 / 2
         }
         if pressedRight {
-            playerDrawable.position.x = pos.x + acceleration * Float(dt)
+            if pos.x < Float(rightBound) {
+                playerDrawable.position.x = pos.x + acceleration * Float(dt)
+            }
             playerDrawable.rotation = -3.14 / 2
         }
         
@@ -160,5 +180,11 @@ class MainViewController : NSViewController {
         default:
             ()
         }
+    }
+    
+    @IBAction func didPressResetBtn(_ sender: NSButton) {
+        self.reset()
+        self.resignFirstResponder()
+        mainView.becomeFirstResponder()
     }
 }

@@ -64,7 +64,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                    <window key="window" title="RetroMan" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="928" height="700"/>
@@ -90,27 +90,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="928" height="700"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="i1j-Q3-ueF" userLabel="Right bar">
-                                <rect key="frame" x="800" y="0.0" width="128" height="660"/>
-                                <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frO-6b-mgG">
-                                        <rect key="frame" x="24" y="612" width="81" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pgg-rf-Nam">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="frO-6b-mgG" firstAttribute="centerX" secondItem="i1j-Q3-ueF" secondAttribute="centerX" id="OZ3-bB-PHS"/>
-                                    <constraint firstAttribute="width" constant="128" id="wxF-xl-Wzp"/>
-                                </constraints>
-                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-Rg-WfS" userLabel="Render View">
-                                <rect key="frame" x="4" y="4" width="792" height="652"/>
+                                <rect key="frame" x="0.0" y="0.0" width="928" height="660"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="2wT-fK-U8h" customClass="MTKView">
-                                        <rect key="frame" x="70" y="0.0" width="652" height="652"/>
+                                        <rect key="frame" x="134" y="0.0" width="660" height="660"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2wT-fK-U8h" secondAttribute="height" multiplier="1:1" id="RRI-mg-UFz"/>
                                         </constraints>
@@ -124,29 +108,39 @@
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="zLR-Yp-n9S" userLabel="Top bar">
                                 <rect key="frame" x="0.0" y="660" width="928" height="40"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ue-Vn-tSR">
+                                        <rect key="frame" x="839" y="3" width="75" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EcE-v2-kQ6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="didPressResetBtn:" target="XfG-lQ-9wD" id="eQJ-EX-LL7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7Ue-Vn-tSR" secondAttribute="trailing" constant="20" id="QDl-6U-fCB"/>
+                                    <constraint firstItem="7Ue-Vn-tSR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLR-Yp-n9S" secondAttribute="leading" constant="20" symbolic="YES" id="Rag-zY-X4E"/>
                                     <constraint firstAttribute="height" constant="40" id="W3g-Wx-JET"/>
+                                    <constraint firstItem="7Ue-Vn-tSR" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="zLz-OR-77j"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="frO-6b-mgG" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="60" id="7B0-45-jmc"/>
-                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="4" id="96g-Gr-MqT"/>
+                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="96g-Gr-MqT"/>
                             <constraint firstAttribute="trailing" secondItem="zLR-Yp-n9S" secondAttribute="trailing" id="9lB-76-hfE"/>
-                            <constraint firstAttribute="bottom" secondItem="i1j-Q3-ueF" secondAttribute="bottom" id="HSG-Hv-adP"/>
-                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" constant="4" id="Hbc-CN-ytq"/>
+                            <constraint firstAttribute="trailing" secondItem="Rzl-Rg-WfS" secondAttribute="trailing" id="EcY-kU-F6x"/>
+                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" id="Hbc-CN-ytq"/>
                             <constraint firstItem="zLR-Yp-n9S" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="JQU-G1-t3O"/>
-                            <constraint firstItem="i1j-Q3-ueF" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" id="YyR-uQ-mmX"/>
                             <constraint firstItem="zLR-Yp-n9S" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="feH-a4-1MI"/>
-                            <constraint firstAttribute="trailing" secondItem="i1j-Q3-ueF" secondAttribute="trailing" id="k2w-Gl-MHi"/>
-                            <constraint firstAttribute="bottom" secondItem="Rzl-Rg-WfS" secondAttribute="bottom" constant="4" id="l86-Tr-gjn"/>
-                            <constraint firstItem="i1j-Q3-ueF" firstAttribute="leading" secondItem="Rzl-Rg-WfS" secondAttribute="trailing" constant="4" id="vQf-wo-0Z3"/>
+                            <constraint firstAttribute="bottom" secondItem="Rzl-Rg-WfS" secondAttribute="bottom" id="l86-Tr-gjn"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="mainView" destination="m2S-Jp-Qdl" id="3rA-7g-LiP"/>
                         <outlet property="mtkView" destination="2wT-fK-U8h" id="ww9-a4-EbK"/>
-                        <outlet property="rightBar" destination="i1j-Q3-ueF" id="Dvq-8d-dGl"/>
                         <outlet property="topBar" destination="zLR-Yp-n9S" id="qgk-lX-ci6"/>
                     </connections>
                 </viewController>
