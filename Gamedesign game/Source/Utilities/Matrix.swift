@@ -10,51 +10,34 @@ import Foundation
 import simd
 
 struct Matrix {
-    var m: [Float]
+    static func makeTranslationMatrix(tx: Float, ty: Float) -> matrix_float4x4 {
+        var matrix = matrix_identity_float4x4
+        
+        matrix[0,3] = tx
+        matrix[1,3] = ty
+        
+        return matrix
+    }
     
-    init() {
-        m = [1, 0, 0, 0,
-             0, 1, 0, 0,
-             0, 0, 1, 0,
-             0, 0, 0, 1
+    static func makeRotationMatrix(angle: Float) -> simd_float4x4 {
+        let rows = [
+            simd_float4( cos(angle), sin(angle), 0, 0),
+            simd_float4(-sin(angle), cos(angle), 0, 0),
+            simd_float4( 0,          0,          1, 0),
+            simd_float4( 0,          0,          0, 1)
         ]
+        
+        return float4x4(rows: rows)
     }
     
-    @discardableResult
-    mutating func setScale(_ scale: simd_float3) -> Matrix {
+    static func makeScaleMatrix(xScale: Float, yScale: Float) -> simd_float4x4 {
+        let rows = [
+            simd_float4(xScale,      0,     0,      0),
+            simd_float4(     0, yScale,     0,      0),
+            simd_float4(     0,      0,     1,      0),
+            simd_float4(     0,      0,     0,      1)
+        ]
         
-        m[0] = scale.x
-        m[5] = scale.y
-        m[10] = scale.z
-        m[15] = 1.0
-        
-        return self
-    }
-    
-    @discardableResult
-    mutating func setPosition(_ translation: simd_float3) -> Matrix {
-        
-        m[12] = translation.x
-        m[13] = translation.y
-        m[14] = translation.z
-        
-        return self
-    }
-    
-    @discardableResult
-    mutating func setRotation(_ rotation: simd_float3) -> Matrix {
-        
-        m[0] = cos(rotation.y) * cos(rotation.z)
-        m[4] = cos(rotation.z) * sin(rotation.x) * sin(rotation.y) - cos(rotation.x) * sin(rotation.z)
-        m[8] = cos(rotation.x) * cos(rotation.z) * sin(rotation.y) + sin(rotation.x) * sin(rotation.z)
-        m[1] = cos(rotation.y) * sin(rotation.z)
-        m[5] = cos(rotation.x) * cos(rotation.z) + sin(rotation.x) * sin(rotation.y) * sin(rotation.z)
-        m[9] = -cos(rotation.z) * sin(rotation.x) + cos(rotation.x) * sin(rotation.y) * sin(rotation.z)
-        m[2] = -sin(rotation.y)
-        m[6] = cos(rotation.y) * sin(rotation.x)
-        m[10] = cos(rotation.x) * cos(rotation.y)
-        m[15] = 1.0
-
-        return self
+        return float4x4(rows: rows)
     }
 }

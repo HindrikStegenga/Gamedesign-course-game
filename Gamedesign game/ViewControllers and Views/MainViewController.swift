@@ -42,19 +42,18 @@ class MainViewController : NSViewController {
     
     func setupWorld() {
         
-        let width = Float(mtkView.drawableSize.width)
-        let height = Float(mtkView.drawableSize.height)
-        
         playerDrawable = Drawable2D.Square()
         guard let playerBuf = playerDrawable.uniform_buffer_source as? DefaultUniformBuffer else { return }
         
+        playerDrawable.fragment_func_name = "player_fragment_func"
         
         playerBuf.color = [1,1,0,1]
-        playerDrawable.position = [Float(gridSize)/2,Float(gridSize/2)]
+        playerDrawable.position = [Float(gridSize)/4,Float(gridSize/4)]
+        playerDrawable.rotation = 0.0
         playerDrawable.scale = 1.0
         setGridSizeCorrectMatrix(drawable: playerDrawable)
         mtlRenderer.addDrawable(drawable: playerDrawable)
-        
+
         for row in 0..<gridSize {
             for column in 0..<gridSize {
                 
@@ -68,14 +67,10 @@ class MainViewController : NSViewController {
                 
                 buf.color = [0.82, 0.04, 0.04, 1]
                 
-                buf.matrix.setScale([Float(1 / width * (width / Float(gridSize))), Float(1 / height * (height / Float(gridSize))), 0.0])
-                
-                let posX = Float.remap(Float(row) + 0.5, 0, Float(gridSize), -1, 1)
-                let posY = Float.remap(Float(column) + 0.5, 0, Float(gridSize), -1, 1)
-                
-                buf.matrix.setPosition([posX, posY, 0])
-                
-                
+                square.scale = 1.0
+                square.position = [Float(row), Float(column)]
+                square.rotation = 0.0
+                setGridSizeCorrectMatrix(drawable: square)
                 mtlRenderer.addDrawable(drawable: square)
             }
         }
@@ -86,14 +81,17 @@ class MainViewController : NSViewController {
         
         let width = Float(mtkView.drawableSize.width)
         let height = Float(mtkView.drawableSize.height)
-        buf.matrix = Matrix()
         
         let posX = Float.remap(drawable.position.x + 0.5, 0, Float(gridSize), -1, 1)
         let posY = Float.remap(drawable.position.y + 0.5, 0, Float(gridSize), -1, 1)
         
-        buf.matrix.setPosition([posX, posY, 0])
-        buf.matrix.setRotation([0,0,0])
-        buf.matrix.setScale([Float(1 / width * (width / Float(gridSize))) * drawable.scale, Float(1 / height * (height / Float(gridSize))) * drawable.scale, 0.0])
+        let scaleMatrix = Matrix.makeScaleMatrix(xScale: Float(1 / width * (width / Float(gridSize))) * drawable.scale,
+                                                 yScale: Float(1 / height * (height / Float(gridSize))) * drawable.scale)
+        
+        let translationMatrix = Matrix.makeTranslationMatrix(tx: posX, ty: posY)
+        let rotationMatrix = Matrix.makeRotationMatrix(angle: drawable.rotation)
+        
+        buf.matrix = rotationMatrix * scaleMatrix * translationMatrix
     }
     
     func update(dt: CFTimeInterval) {
@@ -103,15 +101,32 @@ class MainViewController : NSViewController {
         
         if pressedUp {
             playerDrawable.position.y = pos.y + acceleration * Float(dt)
+            playerDrawable.rotation = 0.0
         }
         if pressedDown {
             playerDrawable.position.y = pos.y - acceleration * Float(dt)
+            playerDrawable.rotation = 3.14
         }
         if pressedLeft {
             playerDrawable.position.x = pos.x - acceleration * Float(dt)
+            playerDrawable.rotation = 3.14 / 2
         }
         if pressedRight {
             playerDrawable.position.x = pos.x + acceleration * Float(dt)
+            playerDrawable.rotation = -3.14 / 2
+        }
+        
+        if pressedUp, pressedLeft {
+            playerDrawable.rotation = 3.14 / 4
+        }
+        if pressedUp, pressedRight {
+            playerDrawable.rotation = -3.14 / 4
+        }
+        if pressedDown, pressedLeft {
+            playerDrawable.rotation = 3.14 / 2 + (3.14 / 4)
+        }
+        if pressedDown, pressedRight {
+            playerDrawable.rotation = -3.14 / 2 - (3.14 / 4)
         }
         
         setGridSizeCorrectMatrix(drawable: playerDrawable)
