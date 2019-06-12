@@ -103,11 +103,24 @@
                                             <action selector="didPressResetBtn:" target="XfG-lQ-9wD" id="eQJ-EX-LL7"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qaa-YZ-x2O">
+                                        <rect key="frame" x="243" y="3" width="86" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Tutorial" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JFR-P7-AGa">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <segue destination="iEt-id-jBd" kind="modal" id="VjQ-EJ-F4n"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="qaa-YZ-x2O" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="IzU-Fs-De9"/>
+                                    <constraint firstItem="7Ue-Vn-tSR" firstAttribute="leading" secondItem="qaa-YZ-x2O" secondAttribute="trailing" constant="9" id="JjG-ZU-auI"/>
                                     <constraint firstAttribute="trailing" secondItem="7Ue-Vn-tSR" secondAttribute="trailing" constant="20" id="QDl-6U-fCB"/>
                                     <constraint firstItem="7Ue-Vn-tSR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLR-Yp-n9S" secondAttribute="leading" constant="20" symbolic="YES" id="Rag-zY-X4E"/>
                                     <constraint firstAttribute="height" constant="40" id="W3g-Wx-JET"/>
+                                    <constraint firstItem="qaa-YZ-x2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLR-Yp-n9S" secondAttribute="leading" constant="20" symbolic="YES" id="e7f-yg-JdG"/>
                                     <constraint firstItem="7Ue-Vn-tSR" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="zLz-OR-77j"/>
                                 </constraints>
                             </customView>
@@ -151,6 +164,80 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="1179"/>
+        </scene>
+        <!--Tutorial-->
+        <scene sceneID="JD1-7r-Tv9">
+            <objects>
+                <viewController title="Tutorial" id="iEt-id-jBd" sceneMemberID="viewController">
+                    <view key="view" id="WHz-X0-a2u">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box boxType="custom" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="OQi-uf-w7I">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <view key="contentView" id="HqG-gn-FSe">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ihq-Rg-4vw">
+                                            <rect key="frame" x="8" y="8" width="432" height="282"/>
+                                            <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="lLu-46-eHr">
+                                                <rect key="frame" x="0.0" y="0.0" width="432" height="282"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="t7D-Wf-G3o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="432" height="282"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <size key="minSize" width="432" height="282"/>
+                                                        <size key="maxSize" width="448" height="10000000"/>
+                                                        <attributedString key="textStorage">
+                                                            <fragment>
+                                                                <string key="content">Ow no! You have become old, and your hair started becoming grey... You need to collect as many bottles of shampoo to make sure your hair doesn't become grey!</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <font key="NSFont" size="24" name="ClassicConsole"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <color key="insertionPointColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="XiI-Y9-WW0">
+                                                <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ToX-av-6ya">
+                                                <rect key="frame" x="416" y="0.0" width="16" height="282"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Ihq-Rg-4vw" secondAttribute="trailing" constant="8" id="759-jt-EHt"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ihq-Rg-4vw" secondAttribute="bottom" constant="8" id="W5J-kI-nSs"/>
+                                        <constraint firstItem="Ihq-Rg-4vw" firstAttribute="top" secondItem="HqG-gn-FSe" secondAttribute="top" constant="8" id="WLl-6I-aGT"/>
+                                        <constraint firstItem="Ihq-Rg-4vw" firstAttribute="leading" secondItem="HqG-gn-FSe" secondAttribute="leading" constant="8" id="d0J-Gx-SX1"/>
+                                    </constraints>
+                                </view>
+                                <color key="fillColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OQi-uf-w7I" secondAttribute="trailing" id="453-IS-Ov1"/>
+                            <constraint firstItem="OQi-uf-w7I" firstAttribute="leading" secondItem="WHz-X0-a2u" secondAttribute="leading" id="Jqg-vJ-3dp"/>
+                            <constraint firstItem="OQi-uf-w7I" firstAttribute="top" secondItem="WHz-X0-a2u" secondAttribute="top" id="aKe-r7-n4D"/>
+                            <constraint firstAttribute="bottom" secondItem="OQi-uf-w7I" secondAttribute="bottom" id="nuT-sF-GMl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="sNm-Gs-bou" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="1178"/>
         </scene>
     </scenes>
 </document>

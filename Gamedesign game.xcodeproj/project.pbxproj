@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		700C29E75DBB58ED027BF714 /* FloatArrayConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C209A18758BE953BAF319 /* FloatArrayConvertible.swift */; };
+		F508D64322B1745C00F80BFA /* clacon.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = F508D63E22B1717C00F80BFA /* clacon.ttf */; };
+		F508D64422B1754300F80BFA /* clacon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F508D63E22B1717C00F80BFA /* clacon.ttf */; };
 		F5378DC922ABCB740003983E /* Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DC822ABCB740003983E /* Primitives.swift */; };
 		F5378DCD22ABEC970003983E /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DCC22ABEC970003983E /* Matrix.swift */; };
 		F5378DCF22ABFAFB0003983E /* MTLRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5378DCE22ABFAFB0003983E /* MTLRenderer.swift */; };
@@ -24,8 +26,22 @@
 		F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F58614B322A95FCF0044B067 /* default_shaders.metal */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F508D64222B1745000F80BFA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				F508D64322B1745C00F80BFA /* clacon.ttf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		700C209A18758BE953BAF319 /* FloatArrayConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatArrayConvertible.swift; sourceTree = "<group>"; };
+		F508D63E22B1717C00F80BFA /* clacon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = clacon.ttf; sourceTree = "<group>"; };
 		F5378DC822ABCB740003983E /* Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitives.swift; sourceTree = "<group>"; };
 		F5378DCC22ABEC970003983E /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		F5378DCE22ABFAFB0003983E /* MTLRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLRenderer.swift; sourceTree = "<group>"; };
@@ -56,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F508D64022B172D700F80BFA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F508D63E22B1717C00F80BFA /* clacon.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F5378DD222AC10FC0003983E /* MTL */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +117,7 @@
 		F548D89322A920D80042A134 /* Gamedesign game */ = {
 			isa = PBXGroup;
 			children = (
+				F508D64022B172D700F80BFA /* Fonts */,
 				F58614B222A95FB40044B067 /* Shaders */,
 				F58614A722A952440044B067 /* Storyboards */,
 				F5378DD522AC1A6C0003983E /* ViewControllers and Views */,
@@ -162,6 +187,7 @@
 				F548D88D22A920D80042A134 /* Sources */,
 				F548D88E22A920D80042A134 /* Frameworks */,
 				F548D88F22A920D80042A134 /* Resources */,
+				F508D64222B1745000F80BFA /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -210,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F508D64422B1754300F80BFA /* clacon.ttf in Resources */,
 				F548D89922A920D90042A134 /* Assets.xcassets in Resources */,
 				F548D89C22A920D90042A134 /* Main.storyboard in Resources */,
 			);
