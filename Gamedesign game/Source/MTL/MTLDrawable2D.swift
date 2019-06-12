@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import MetalKit
+import Cocoa
 import Metal
 
 class MTLDrawable2D {
@@ -20,6 +22,7 @@ class MTLDrawable2D {
     let index_buffer: MTLBuffer
     let index_count: Int
     let uniform_buffer: MTLBuffer
+    let fragment_function_texture: MTLTexture?
     
     private lazy var pipeline_state: MTLRenderPipelineState = {
         
@@ -48,6 +51,17 @@ class MTLDrawable2D {
         self.vertex_function = MTLDrawable2D.create_vertex_function(library, &drawable)
         self.fragment_function = MTLDrawable2D.create_fragment_function(library, &drawable)
         
+        if let texture_name = drawable.fragment_func_texture_name {
+            let nsImage = NSImage(named: texture_name)
+            let cgImage = nsImage?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+            guard cgImage != nil else {
+                fatalError("Cannot create CGImage!")
+            }
+            self.fragment_function_texture = MTLDrawable2D.create_texture(device, cgImage!, &drawable)
+        } else {
+            self.fragment_function_texture = nil
+        }
+        
     }
     
     func draw(_ encoder: MTLRenderCommandEncoder) {
@@ -55,6 +69,9 @@ class MTLDrawable2D {
         encoder.setVertexBuffer(vertex_buffer, offset: 0, index: 0)
         encoder.setVertexBuffer(uniform_buffer, offset: 0, index: 1)
         encoder.setFragmentBuffer(uniform_buffer, offset: 0, index: 0)
+        if fragment_function_texture != nil {
+            encoder.setFragmentTexture(fragment_function_texture, index: 0)
+        }
         encoder.drawIndexedPrimitives(type: .triangleStrip, indexCount: index_count, indexType: .uint16, indexBuffer: index_buffer, indexBufferOffset: 0)
     }
     
@@ -93,4 +110,11 @@ class MTLDrawable2D {
         return f
     }
     
+    static func create_texture(_ device: MTLDevice, _ image: CGImage, _ drawable: inout Drawable2D) -> MTLTexture {
+        let loader = MTKTextureLoader(device: device)
+        guard let texture = try? loader.newTexture(cgImage: image, options: nil) else {
+            fatalError("Cannot create texture!")
+        }
+        return texture
+    }
 }

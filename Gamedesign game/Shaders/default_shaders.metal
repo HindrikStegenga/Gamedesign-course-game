@@ -37,14 +37,22 @@ fragment float4 default_fragment_func(Vertex vert [[stage_in]], constant Uniform
     uv = uv * 2.0 - 1.0;
     bool inside = length(uv) < 0.5;
     
-    return inside ? float4(0) : uniforms.color;
+    constexpr float value = 1.0 / 255.0 * 236.0;
+    return inside ? float4(value) : uniforms.color;
 }
 
-fragment float4 player_fragment_func(Vertex vert [[stage_in]], constant UniformBuffer &uniforms [[buffer(0)]]) {
+constexpr sampler textureSampler(mag_filter::linear, min_filter::linear);
+
+fragment float4 player_fragment_func(Vertex vert [[stage_in]], constant UniformBuffer &uniforms [[buffer(0)]], texture2d<float> colorTexture [[texture(0)]]) {
     float2 uv = vert.texture_coord;
+    float4 color = colorTexture.sample(textureSampler, vert.texture_coord);
+    if (color.a < 0.1) {
+        discard_fragment();
+    }
+    return color;
     
     bool line = false;
-    float lineThickness = 0.1;
+    float lineThickness = 0.25;
     
     if (uv.y > 1.0 - lineThickness) {
         line = true;

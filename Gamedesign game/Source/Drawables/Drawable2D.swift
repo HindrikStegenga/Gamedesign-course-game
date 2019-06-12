@@ -18,6 +18,7 @@ class Drawable2D {
     
     var vertex_func_name: String = "default_vertex_func"
     var fragment_func_name: String = "default_fragment_func"
+    var fragment_func_texture_name: String? = nil
     
     let vertex_buffer_source: FloatArrayConvertible
     let index_buffer_source: [UInt16]

@@ -64,7 +64,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="RetroMan" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                    <window key="window" title="ShampooMan" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="928" height="700"/>
@@ -87,30 +87,14 @@
             <objects>
                 <viewController title="Gamedesign game" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="MainViewController" customModule="Gamedesign_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl" customClass="MainView" customModule="Gamedesign_game" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="928" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="415" height="455"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Rzl-Rg-WfS" userLabel="Render View">
-                                <rect key="frame" x="0.0" y="0.0" width="928" height="660"/>
-                                <subviews>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2wT-fK-U8h" customClass="MTKView">
-                                        <rect key="frame" x="134" y="0.0" width="660" height="660"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="2wT-fK-U8h" secondAttribute="height" multiplier="1:1" id="RRI-mg-UFz"/>
-                                        </constraints>
-                                    </customView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="2wT-fK-U8h" firstAttribute="centerX" secondItem="Rzl-Rg-WfS" secondAttribute="centerX" id="3va-bI-yTx"/>
-                                    <constraint firstItem="2wT-fK-U8h" firstAttribute="height" secondItem="Rzl-Rg-WfS" secondAttribute="height" id="FhN-7Q-jf2"/>
-                                    <constraint firstItem="2wT-fK-U8h" firstAttribute="centerY" secondItem="Rzl-Rg-WfS" secondAttribute="centerY" id="bbZ-hn-6GW"/>
-                                </constraints>
-                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="zLR-Yp-n9S" userLabel="Top bar">
-                                <rect key="frame" x="0.0" y="660" width="928" height="40"/>
+                                <rect key="frame" x="0.0" y="415" width="415" height="40"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ue-Vn-tSR">
-                                        <rect key="frame" x="839" y="3" width="75" height="32"/>
+                                        <rect key="frame" x="326" y="3" width="75" height="32"/>
                                         <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EcE-v2-kQ6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -127,15 +111,35 @@
                                     <constraint firstItem="7Ue-Vn-tSR" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="zLz-OR-77j"/>
                                 </constraints>
                             </customView>
+                            <box borderType="none" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ofL-0e-bSJ">
+                                <rect key="frame" x="-3" y="-4" width="421" height="421"/>
+                                <view key="contentView" id="fBg-Hz-UcB">
+                                    <rect key="frame" x="0.0" y="0.0" width="421" height="421"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2wT-fK-U8h" customClass="MTKView">
+                                            <rect key="frame" x="0.0" y="0.0" width="421" height="421"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="2wT-fK-U8h" secondAttribute="height" multiplier="1:1" id="tos-0K-9im"/>
+                                            </constraints>
+                                        </customView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2wT-fK-U8h" firstAttribute="centerX" secondItem="fBg-Hz-UcB" secondAttribute="centerX" id="Gxv-02-GmB"/>
+                                        <constraint firstAttribute="bottom" secondItem="2wT-fK-U8h" secondAttribute="bottom" id="Ikc-yp-5Ri"/>
+                                        <constraint firstItem="2wT-fK-U8h" firstAttribute="top" secondItem="fBg-Hz-UcB" secondAttribute="top" id="LKG-an-Qcj"/>
+                                    </constraints>
+                                </view>
+                            </box>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="96g-Gr-MqT"/>
                             <constraint firstAttribute="trailing" secondItem="zLR-Yp-n9S" secondAttribute="trailing" id="9lB-76-hfE"/>
-                            <constraint firstAttribute="trailing" secondItem="Rzl-Rg-WfS" secondAttribute="trailing" id="EcY-kU-F6x"/>
-                            <constraint firstItem="Rzl-Rg-WfS" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" id="Hbc-CN-ytq"/>
                             <constraint firstItem="zLR-Yp-n9S" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="JQU-G1-t3O"/>
+                            <constraint firstItem="ofL-0e-bSJ" firstAttribute="top" secondItem="zLR-Yp-n9S" secondAttribute="bottom" id="SJ1-RB-IuW"/>
+                            <constraint firstAttribute="trailing" secondItem="ofL-0e-bSJ" secondAttribute="trailing" id="Wp7-jF-WLv"/>
                             <constraint firstItem="zLR-Yp-n9S" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="feH-a4-1MI"/>
-                            <constraint firstAttribute="bottom" secondItem="Rzl-Rg-WfS" secondAttribute="bottom" id="l86-Tr-gjn"/>
+                            <constraint firstAttribute="bottom" secondItem="ofL-0e-bSJ" secondAttribute="bottom" id="jtS-PK-X5j"/>
+                            <constraint firstItem="ofL-0e-bSJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="sTs-6t-6BO"/>
                         </constraints>
                     </view>
                     <connections>

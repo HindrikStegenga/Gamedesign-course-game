@@ -20,7 +20,7 @@ class MainViewController : NSViewController {
     
     var mtlRenderer: MTLRenderer!
     var playerDrawable: Drawable2D!
-    var gridSize: Int = 50
+    var gridSize: Int = 25
     var accelerationFactor: Float = 3.33
     
     var pressedUp: Bool = false
@@ -42,6 +42,10 @@ class MainViewController : NSViewController {
     }
     
     func reset() {
+        pressedUp = false
+        pressedDown = false
+        pressedLeft = false
+        pressedRight = false
         mtlRenderer.clearDrawables()
         setupWorld()
     }
@@ -53,13 +57,17 @@ class MainViewController : NSViewController {
         
         playerDrawable.fragment_func_name = "player_fragment_func"
         
-        playerBuf.color = [1,1,0,1]
+        playerBuf.color = [1,1,1,1]
         playerDrawable.position = [Float(gridSize)/4,Float(gridSize/4)]
         playerDrawable.rotation = 0.0
         playerDrawable.scale = 1.0
+        playerDrawable.fragment_func_texture_name = "gray_man_2"
         setGridSizeCorrectMatrix(drawable: playerDrawable)
         mtlRenderer.addDrawable(drawable: playerDrawable)
-
+        
+        let clearValue = 1.0 / 255.0 * 236.0
+        mtlRenderer.mtkView.clearColor = MTLClearColor(red: clearValue, green: clearValue, blue: clearValue, alpha: 1)
+        
         for row in 0..<gridSize {
             for column in 0..<gridSize {
                 
@@ -71,7 +79,7 @@ class MainViewController : NSViewController {
                     continue
                 }
                 
-                buf.color = [0.82, 0.04, 0.04, 1]
+                buf.color = [1, 0, 0, 1]
                 
                 square.scale = 1.0
                 square.position = [Float(row), Float(column)]
