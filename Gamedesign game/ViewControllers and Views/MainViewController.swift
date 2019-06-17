@@ -14,9 +14,11 @@ import Cocoa
 class MainViewController : NSViewController {
     
     @IBOutlet var topBar: NSView!
-    @IBOutlet var rightBar: NSView!
     @IBOutlet var mtkView: MTKView!
     @IBOutlet var mainView: MainView!
+    
+    var saddleBrown: simd_float4 = [0.545, 0.271, 0.075, 1]
+    var bottleCount = 6
     
     var mtlRenderer: MTLRenderer!
     var playerDrawable: Drawable2D!
@@ -51,22 +53,26 @@ class MainViewController : NSViewController {
     }
     
     func setupWorld() {
-        
-        playerDrawable = Drawable2D.Square()
-        guard let playerBuf = playerDrawable.uniform_buffer_source as? DefaultUniformBuffer else { return }
-        
-        playerDrawable.fragment_func_name = "player_fragment_func"
-        
-        playerBuf.color = [1,1,1,1]
-        playerDrawable.position = [Float(gridSize)/4,Float(gridSize/4)]
-        playerDrawable.rotation = 0.0
-        playerDrawable.scale = 1.0
-        playerDrawable.fragment_func_texture_name = "gray_man_2"
-        setGridSizeCorrectMatrix(drawable: playerDrawable)
-        mtlRenderer.addDrawable(drawable: playerDrawable)
-        
         let clearValue = 1.0 / 255.0 * 236.0
         mtlRenderer.mtkView.clearColor = MTLClearColor(red: clearValue, green: clearValue, blue: clearValue, alpha: 1)
+        
+        for _ in 0..<bottleCount {
+            let x = Int.random(in: 2..<gridSize-2)
+            let y = Int.random(in: 2..<gridSize-2)
+            
+            let bottle = Drawable2D.Square()
+            guard let buf = bottle.uniform_buffer_source as? DefaultUniformBuffer else {
+                continue
+            }
+            buf.color = [1,1,1,1]
+            bottle.fragment_func_name = "player_fragment_func"
+            bottle.rotation = 0.0
+            bottle.position = [Float(x), Float(y)]
+            bottle.scale = 1.0
+            bottle.fragment_func_texture_name = "bottle"
+            setGridSizeCorrectMatrix(drawable: bottle)
+            mtlRenderer.addDrawable(drawable: bottle)
+        }
         
         for row in 0..<gridSize {
             for column in 0..<gridSize {
@@ -79,7 +85,7 @@ class MainViewController : NSViewController {
                     continue
                 }
                 
-                buf.color = [1, 0, 0, 1]
+                buf.color = saddleBrown
                 
                 square.scale = 1.0
                 square.position = [Float(row), Float(column)]
@@ -88,6 +94,19 @@ class MainViewController : NSViewController {
                 mtlRenderer.addDrawable(drawable: square)
             }
         }
+        
+        playerDrawable = Drawable2D.Square()
+        guard let playerBuf = playerDrawable.uniform_buffer_source as? DefaultUniformBuffer else { return }
+        
+        playerDrawable.fragment_func_name = "player_fragment_func"
+        
+        playerBuf.color = [1,1,1,1]
+        playerDrawable.position = [Float(gridSize)/2,Float(gridSize/2)]
+        playerDrawable.rotation = 0.0
+        playerDrawable.scale = 1.0
+        playerDrawable.fragment_func_texture_name = "gray_man_2"
+        setGridSizeCorrectMatrix(drawable: playerDrawable)
+        mtlRenderer.addDrawable(drawable: playerDrawable)
     }
     
     func setGridSizeCorrectMatrix(drawable: Drawable2D) {
