@@ -108,6 +108,12 @@ class MTLRenderer : NSObject, MTKViewDelegate {
         drawables.append((drawable, mtlDrawable))
     }
     
+    func removeDrawable(drawable: inout Drawable2D) {
+        drawables = drawables.filter {
+            $0.0 !== drawable
+        }
+    }
+    
     func clearDrawables() {
         drawables.removeAll()
     }

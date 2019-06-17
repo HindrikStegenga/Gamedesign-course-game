@@ -11,7 +11,6 @@ import Metal
 import simd
 
 class Drawable2D {
-    
     var position: simd_float2
     var scale: simd_float1
     var rotation: simd_float1
