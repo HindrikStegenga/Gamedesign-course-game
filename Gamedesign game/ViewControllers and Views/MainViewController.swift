@@ -20,7 +20,7 @@ class MainViewController : NSViewController {
     @IBOutlet weak var secondCountLabel: NSTextField!
     
     var saddleBrown: simd_float4 = [0.545, 0.271, 0.075, 1]
-    var boxCount = 10
+    var maxBoxCount = 10
     var bottleCount = 6
     var hitBottleCount = 0
     
@@ -36,7 +36,7 @@ class MainViewController : NSViewController {
     var pressedLeft: Bool = false
     var pressedRight: Bool = false
     
-    var totalSecondCount = 5
+    var totalSecondCount = 60
     var currentSecondCount = 0
     var gameTimer: Timer? = nil
     
@@ -183,25 +183,37 @@ class MainViewController : NSViewController {
         
         if pressedUp {
             if pos.y < Float(upperBound) {
-                playerDrawable.position.y = pos.y + acceleration * Float(dt)
+                let newY = pos.y + acceleration * Float(dt)
+                if !willCollideWithBox(x: pos.x, y: newY) {
+                    playerDrawable.position.y = newY
+                }
             }
             playerDrawable.rotation = 0.0
         }
         if pressedDown {
             if pos.y > Float(lowerBound) {
-                playerDrawable.position.y = pos.y - acceleration * Float(dt)
+                let newY = pos.y - acceleration * Float(dt)
+                if !willCollideWithBox(x: pos.x, y: newY) {
+                    playerDrawable.position.y = newY
+                }
             }
             playerDrawable.rotation = 3.14
         }
         if pressedLeft {
             if pos.x > Float(leftBound) {
-                playerDrawable.position.x = pos.x - acceleration * Float(dt)
+                let newX = pos.x - acceleration * Float(dt)
+                if !willCollideWithBox(x: newX, y: pos.y) {
+                    playerDrawable.position.x = newX
+                }
             }
             playerDrawable.rotation = 3.14 / 2
         }
         if pressedRight {
             if pos.x < Float(rightBound) {
-                playerDrawable.position.x = pos.x + acceleration * Float(dt)
+                let newX = pos.x + acceleration * Float(dt)
+                if !willCollideWithBox(x: newX, y: pos.y) {
+                    playerDrawable.position.x = newX
+                }
             }
             playerDrawable.rotation = -3.14 / 2
         }
@@ -221,6 +233,19 @@ class MainViewController : NSViewController {
         
         setGridSizeCorrectMatrix(drawable: playerDrawable)
         updateBottles()
+    }
+    
+    func willCollideWithBox(x: Float,y: Float) -> Bool {
+        for box in boxDrawables {
+            
+            let distX = abs(x - box.position.x)
+            let distY = abs(y - box.position.y)
+            
+            if sqrt(distX * distX + distY * distY) < 1.4 {
+                return true
+            }
+        }
+        return false
     }
     
     func updateBottles() {
@@ -248,8 +273,7 @@ class MainViewController : NSViewController {
     }
     
     func createNewBottle() {
-        let x = Int.random(in: 2..<gridSize-2)
-        let y = Int.random(in: 2..<gridSize-2)
+        let (x,y) = getValidBottlePosition()
         
         let bottle = Drawable2D.Square()
         guard let buf = bottle.uniform_buffer_source as? DefaultUniformBuffer else {
@@ -264,6 +288,37 @@ class MainViewController : NSViewController {
         bottleDrawables.append(bottle)
         setGridSizeCorrectMatrix(drawable: bottle)
         mtlRenderer.addDrawable(drawable: bottle)
+    }
+    
+    func getValidBottlePosition() -> (Int,Int) {
+        let x = Int.random(in: 2..<gridSize-2)
+        let y = Int.random(in: 2..<gridSize-2)
+        
+        for bottle in bottleDrawables {
+            let distX = abs(Float(x) - bottle.position.x)
+            let distY = abs(Float(y) - bottle.position.y)
+            
+            if sqrt(distX * distX + distY * distY) < 4.0 {
+                return getValidBottlePosition()
+            }
+        }
+        
+        for box in boxDrawables {
+            let distX = abs(Float(x) - box.position.x)
+            let distY = abs(Float(y) - box.position.y)
+            
+            if sqrt(distX * distX + distY * distY) < 3.0 {
+                return getValidBottlePosition()
+            }
+        }
+        
+        let distX = abs(Float(x) - playerDrawable.position.x)
+        let distY = abs(Float(y) - playerDrawable.position.y)
+        if sqrt(distX * distX + distY * distY) < 4.0 {
+            return getValidBottlePosition()
+        }
+        
+        return (x,y)
     }
     
     func pressedKey(event: NSEvent) {
@@ -297,12 +352,27 @@ class MainViewController : NSViewController {
     }
     
     func setupGroceryStore() {
-        for _ in 0..<boxCount {
-            
+        topLoop: while boxDrawables.count != maxBoxCount {
             //Apple boxes are twice as big.
             
             let x = Int.random(in: 3..<gridSize-3)
             let y = Int.random(in: 3..<gridSize-3)
+            
+            for box in boxDrawables {
+                let distX = abs(Float(x) - box.position.x)
+                let distY = abs(Float(y) - box.position.y)
+                
+                if sqrt(distX * distX + distY * distY) < 5.0 {
+                    continue topLoop
+                }
+            }
+            
+            let distX = abs(Float(x) - playerDrawable.position.x)
+            let distY = abs(Float(y) - playerDrawable.position.y)
+            
+            if sqrt(distX * distX + distY * distY) < 5.0 {
+                continue topLoop
+            }
             
             let appleBox = Drawable2D.Square()
             guard let buf = appleBox.uniform_buffer_source as? DefaultUniformBuffer else {
@@ -315,6 +385,7 @@ class MainViewController : NSViewController {
             appleBox.scale = 2.0
             appleBox.fragment_func_texture_name = "apples"
             setGridSizeCorrectMatrix(drawable: appleBox)
+            boxDrawables.append(appleBox)
             mtlRenderer.addDrawable(drawable: appleBox)
         }
     }
