@@ -11,9 +11,9 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Gamedesign game" id="1Xt-HY-uBw">
+                            <menuItem title="Hair-care man" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Gamedesign game" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Hair-care man" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
                                         <menuItem title="About Gamedesign game" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -64,7 +64,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="ShampooMan" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                    <window key="window" title="Hair-care man" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="928" height="700"/>
@@ -110,7 +110,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <segue destination="iEt-id-jBd" kind="modal" id="VjQ-EJ-F4n"/>
+                                            <segue destination="iEt-id-jBd" kind="modal" identifier="tutorialSegue" id="VjQ-EJ-F4n"/>
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4C-j9-bOh">
@@ -121,16 +121,27 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="38Z-aj-9OB">
+                                        <rect key="frame" x="118" y="12" width="87" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="SecondCount" id="UDx-vG-060">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="h4C-j9-bOh" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="DW7-MH-EdK"/>
+                                    <constraint firstItem="qaa-YZ-x2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="38Z-aj-9OB" secondAttribute="trailing" constant="8" symbolic="YES" id="Ft8-fi-gel"/>
                                     <constraint firstItem="qaa-YZ-x2O" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="IzU-Fs-De9"/>
                                     <constraint firstItem="7Ue-Vn-tSR" firstAttribute="leading" secondItem="qaa-YZ-x2O" secondAttribute="trailing" constant="9" id="JjG-ZU-auI"/>
                                     <constraint firstAttribute="trailing" secondItem="7Ue-Vn-tSR" secondAttribute="trailing" constant="20" id="QDl-6U-fCB"/>
                                     <constraint firstItem="7Ue-Vn-tSR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLR-Yp-n9S" secondAttribute="leading" constant="20" symbolic="YES" id="Rag-zY-X4E"/>
+                                    <constraint firstItem="38Z-aj-9OB" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="Uwt-wN-Nba"/>
                                     <constraint firstAttribute="height" constant="40" id="W3g-Wx-JET"/>
                                     <constraint firstItem="qaa-YZ-x2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h4C-j9-bOh" secondAttribute="trailing" constant="8" symbolic="YES" id="atb-mI-dy7"/>
                                     <constraint firstItem="qaa-YZ-x2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zLR-Yp-n9S" secondAttribute="leading" constant="20" symbolic="YES" id="e7f-yg-JdG"/>
+                                    <constraint firstItem="38Z-aj-9OB" firstAttribute="leading" secondItem="h4C-j9-bOh" secondAttribute="trailing" constant="25" id="fZc-hu-idW"/>
                                     <constraint firstItem="h4C-j9-bOh" firstAttribute="leading" secondItem="zLR-Yp-n9S" secondAttribute="leading" constant="22" id="wyJ-RQ-YAf"/>
                                     <constraint firstItem="7Ue-Vn-tSR" firstAttribute="centerY" secondItem="zLR-Yp-n9S" secondAttribute="centerY" id="zLz-OR-77j"/>
                                 </constraints>
@@ -170,12 +181,92 @@
                         <outlet property="bottleCountLabel" destination="h4C-j9-bOh" id="orS-Oq-8sZ"/>
                         <outlet property="mainView" destination="m2S-Jp-Qdl" id="3rA-7g-LiP"/>
                         <outlet property="mtkView" destination="2wT-fK-U8h" id="ww9-a4-EbK"/>
+                        <outlet property="secondCountLabel" destination="38Z-aj-9OB" id="u5p-ma-rgM"/>
                         <outlet property="topBar" destination="zLR-Yp-n9S" id="qgk-lX-ci6"/>
+                        <segue destination="DCH-Cd-f5P" kind="modal" identifier="endGameSegue" id="3Lf-25-0ZS"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="1179"/>
+        </scene>
+        <!--Score-->
+        <scene sceneID="LLA-ZG-FKv">
+            <objects>
+                <viewController title="Score" id="DCH-Cd-f5P" customClass="EndGameViewController" customModule="Gamedesign_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="KbU-e5-Kj3">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="toe-lQ-NCX">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <view key="contentView" id="wkF-jf-iEw">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-zK-kG0">
+                                            <rect key="frame" x="199" y="137" width="51" height="24"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Score" id="uyV-gT-aNg">
+                                                <font key="font" size="24" name="ClassicConsole"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I2P-Wv-GVp">
+                                            <rect key="frame" x="361" y="8" width="79" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="cJM-Ed-zxj"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="squareTextured" title="New game" bezelStyle="texturedSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="DLa-TU-ar9">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="24" name="ClassicConsole"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="didPressNewGameBtn:" target="DCH-Cd-f5P" id="z1U-oY-42e"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Eua-zR-MZT">
+                                            <rect key="frame" x="8" y="8" width="42" height="24"/>
+                                            <buttonCell key="cell" type="squareTextured" title="Quit" bezelStyle="texturedSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="jeD-Jo-qep">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" size="24" name="ClassicConsole"/>
+                                            </buttonCell>
+                                            <color key="contentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="didPressQuitBtn:" target="DCH-Cd-f5P" id="P2d-zV-QNc"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="I2P-Wv-GVp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wkF-jf-iEw" secondAttribute="leading" constant="20" symbolic="YES" id="0n6-Ex-5g2"/>
+                                        <constraint firstItem="I2P-Wv-GVp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Eua-zR-MZT" secondAttribute="trailing" constant="8" symbolic="YES" id="6Vm-yq-MPR"/>
+                                        <constraint firstItem="SGI-zK-kG0" firstAttribute="centerX" secondItem="wkF-jf-iEw" secondAttribute="centerX" id="94z-YF-0je"/>
+                                        <constraint firstAttribute="trailing" secondItem="I2P-Wv-GVp" secondAttribute="trailing" constant="8" id="Kqp-OG-rYv"/>
+                                        <constraint firstAttribute="bottom" secondItem="Eua-zR-MZT" secondAttribute="bottom" constant="8" id="Yrl-F6-3sE"/>
+                                        <constraint firstItem="Eua-zR-MZT" firstAttribute="leading" secondItem="wkF-jf-iEw" secondAttribute="leading" constant="8" id="bA1-6F-HSt"/>
+                                        <constraint firstAttribute="bottom" secondItem="I2P-Wv-GVp" secondAttribute="bottom" constant="8" id="iyA-O4-GDk"/>
+                                        <constraint firstItem="SGI-zK-kG0" firstAttribute="centerY" secondItem="wkF-jf-iEw" secondAttribute="centerY" id="l93-xL-7ZA"/>
+                                    </constraints>
+                                </view>
+                                <color key="borderColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="fillColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="toe-lQ-NCX" secondAttribute="bottom" id="Lbh-uS-j2o"/>
+                            <constraint firstItem="toe-lQ-NCX" firstAttribute="top" secondItem="KbU-e5-Kj3" secondAttribute="top" id="M8Y-vk-6hg"/>
+                            <constraint firstItem="toe-lQ-NCX" firstAttribute="leading" secondItem="KbU-e5-Kj3" secondAttribute="leading" id="RJG-OQ-J6Y"/>
+                            <constraint firstAttribute="trailing" secondItem="toe-lQ-NCX" secondAttribute="trailing" id="cbQ-6r-p5R"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="SGI-zK-kG0" id="Gkq-Fr-e2Z"/>
+                    </connections>
+                </viewController>
+                <customObject id="Lsh-id-ffn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="1819"/>
         </scene>
         <!--Tutorial-->
         <scene sceneID="JD1-7r-Tv9">

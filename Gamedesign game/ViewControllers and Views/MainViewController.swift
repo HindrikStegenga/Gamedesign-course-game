@@ -17,6 +17,7 @@ class MainViewController : NSViewController {
     @IBOutlet var mtkView: MTKView!
     @IBOutlet var mainView: MainView!
     @IBOutlet weak var bottleCountLabel: NSTextField!
+    @IBOutlet weak var secondCountLabel: NSTextField!
     
     var saddleBrown: simd_float4 = [0.545, 0.271, 0.075, 1]
     var bottleCount = 6
@@ -33,6 +34,10 @@ class MainViewController : NSViewController {
     var pressedLeft: Bool = false
     var pressedRight: Bool = false
     
+    var totalSecondCount = 5
+    var currentSecondCount = 0
+    var gameTimer: Timer? = nil
+    
     override func viewDidLoad() {
         guard mtkView != nil, mainView != nil else {
             fatalError("Failure")
@@ -42,8 +47,30 @@ class MainViewController : NSViewController {
         mainView.keyUpDelegate = unPressedKey
         
         self.mtlRenderer = MTLRenderer(mtkView: mtkView)
-        self.mtlRenderer.updateClosure = self.update
-        setupWorld()
+        
+        #if DEBUG
+            reset()
+        #else
+            self.performSegue(withIdentifier: "tutorialSegue", sender: nil)
+        #endif
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "tutorialSegue":
+            let vc = segue.destinationController as! TutorialViewController
+            vc.delegate = {
+                self.reset()
+            }
+        case "endGameSegue":
+            let vc = segue.destinationController as! EndGameViewController
+            vc.score = hitBottleCount
+            vc.delegate = {
+                self.reset()
+            }
+        default:
+            return
+        }
     }
     
     func reset() {
@@ -56,6 +83,24 @@ class MainViewController : NSViewController {
         bottleCountLabel.stringValue = "Collected bottles: \(hitBottleCount)"
         mtlRenderer.clearDrawables()
         setupWorld()
+        
+        currentSecondCount = 0
+        self.secondCountLabel.stringValue = "Time: \(totalSecondCount)"
+        self.gameTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {
+            timer in
+            
+            if self.currentSecondCount < self.totalSecondCount {
+                self.currentSecondCount += 1
+                self.secondCountLabel.stringValue = "Time: \(self.totalSecondCount - self.currentSecondCount)"
+                return
+            }
+            timer.invalidate()
+            self.mtlRenderer.updateClosure = nil
+            self.performSegue(withIdentifier: "endGameSegue", sender: self.hitBottleCount)
+        })
+        
+        //Set the update closure, triggering the drawloop
+        mtlRenderer.updateClosure = update
     }
     
     func setupWorld() {
@@ -181,7 +226,7 @@ class MainViewController : NSViewController {
             let distX = abs(xPlayer - bottle.position.x)
             let distY = abs(yPlayer - bottle.position.y)
             
-            if sqrt(distX * distX + distY * distY) < 0.6 {
+            if sqrt(distX * distX + distY * distY) < 0.7 {
                 //Hit
                 hitBottleCount += 1
                 bottleCountLabel.stringValue = "Collected bottles: \(hitBottleCount)"

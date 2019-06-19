@@ -22,6 +22,7 @@
 		F548D89922A920D90042A134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F548D89822A920D90042A134 /* Assets.xcassets */; };
 		F548D89C22A920D90042A134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F548D89A22A920D90042A134 /* Main.storyboard */; };
 		F548D8A522A924D30042A134 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548D8A422A924D30042A134 /* MainViewController.swift */; };
+		F55D97DA22BA939F00630B43 /* EndGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D97D922BA939F00630B43 /* EndGameViewController.swift */; };
 		F58614B122A956EE0044B067 /* SizeOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614B022A956EE0044B067 /* SizeOf.swift */; };
 		F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F58614B322A95FCF0044B067 /* default_shaders.metal */; };
 		F5D5598822B7E67300AD54F8 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D5598722B7E67300AD54F8 /* TutorialViewController.swift */; };
@@ -58,6 +59,7 @@
 		F548D89D22A920D90042A134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F548D89E22A920D90042A134 /* Gamedesign_game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gamedesign_game.entitlements; sourceTree = "<group>"; };
 		F548D8A422A924D30042A134 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F55D97D922BA939F00630B43 /* EndGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameViewController.swift; sourceTree = "<group>"; };
 		F58614B022A956EE0044B067 /* SizeOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOf.swift; sourceTree = "<group>"; };
 		F58614B322A95FCF0044B067 /* default_shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = default_shaders.metal; sourceTree = "<group>"; };
 		F5D5598722B7E67300AD54F8 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				F548D8A422A924D30042A134 /* MainViewController.swift */,
 				F5378DD622AC1A8D0003983E /* MainView.swift */,
 				F5D5598722B7E67300AD54F8 /* TutorialViewController.swift */,
+				F55D97D922BA939F00630B43 /* EndGameViewController.swift */,
 			);
 			path = "ViewControllers and Views";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 			files = (
 				F5D5598822B7E67300AD54F8 /* TutorialViewController.swift in Sources */,
 				F5378DD122ABFF650003983E /* MTLDrawable2D.swift in Sources */,
+				F55D97DA22BA939F00630B43 /* EndGameViewController.swift in Sources */,
 				F5378DD722AC1A8D0003983E /* MainView.swift in Sources */,
 				F548D8A522A924D30042A134 /* MainViewController.swift in Sources */,
 				F53A338422AAF9C1009CB02B /* Vertex.swift in Sources */,
