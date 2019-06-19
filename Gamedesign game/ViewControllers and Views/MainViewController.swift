@@ -20,12 +20,14 @@ class MainViewController : NSViewController {
     @IBOutlet weak var secondCountLabel: NSTextField!
     
     var saddleBrown: simd_float4 = [0.545, 0.271, 0.075, 1]
+    var boxCount = 10
     var bottleCount = 6
     var hitBottleCount = 0
     
     var mtlRenderer: MTLRenderer!
     var playerDrawable: Drawable2D!
     var bottleDrawables: [Drawable2D] = []
+    var boxDrawables: [Drawable2D] = []
     var gridSize: Int = 25
     var accelerationFactor: Float = 3.33
     
@@ -74,11 +76,17 @@ class MainViewController : NSViewController {
     }
     
     func reset() {
+        
+        if gameTimer != nil {
+            gameTimer?.invalidate()
+        }
+        
         pressedUp = false
         pressedDown = false
         pressedLeft = false
         pressedRight = false
         bottleDrawables = []
+        boxDrawables = []
         hitBottleCount = 0
         bottleCountLabel.stringValue = "Collected bottles: \(hitBottleCount)"
         mtlRenderer.clearDrawables()
@@ -140,6 +148,8 @@ class MainViewController : NSViewController {
         playerDrawable.fragment_func_texture_name = "gray_man_2"
         setGridSizeCorrectMatrix(drawable: playerDrawable)
         mtlRenderer.addDrawable(drawable: playerDrawable)
+        
+        setupGroceryStore()
     }
     
     func setGridSizeCorrectMatrix(drawable: Drawable2D) {
@@ -283,6 +293,29 @@ class MainViewController : NSViewController {
             pressedRight = false
         default:
             ()
+        }
+    }
+    
+    func setupGroceryStore() {
+        for _ in 0..<boxCount {
+            
+            //Apple boxes are twice as big.
+            
+            let x = Int.random(in: 3..<gridSize-3)
+            let y = Int.random(in: 3..<gridSize-3)
+            
+            let appleBox = Drawable2D.Square()
+            guard let buf = appleBox.uniform_buffer_source as? DefaultUniformBuffer else {
+                return
+            }
+            buf.color = [1,1,1,1]
+            appleBox.fragment_func_name = "player_fragment_func"
+            appleBox.rotation = 0.0
+            appleBox.position = [Float(x), Float(y)]
+            appleBox.scale = 2.0
+            appleBox.fragment_func_texture_name = "apples"
+            setGridSizeCorrectMatrix(drawable: appleBox)
+            mtlRenderer.addDrawable(drawable: appleBox)
         }
     }
     
