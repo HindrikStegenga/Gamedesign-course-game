@@ -22,6 +22,8 @@
 		F548D89922A920D90042A134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F548D89822A920D90042A134 /* Assets.xcassets */; };
 		F548D89C22A920D90042A134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F548D89A22A920D90042A134 /* Main.storyboard */; };
 		F548D8A522A924D30042A134 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548D8A422A924D30042A134 /* MainViewController.swift */; };
+		F55670F122C12FF900075325 /* ring.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F55670EF22C12FF900075325 /* ring.aiff */; };
+		F55670F222C12FF900075325 /* hit.aiff in Resources */ = {isa = PBXBuildFile; fileRef = F55670F022C12FF900075325 /* hit.aiff */; };
 		F55D97DA22BA939F00630B43 /* EndGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D97D922BA939F00630B43 /* EndGameViewController.swift */; };
 		F58614B122A956EE0044B067 /* SizeOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58614B022A956EE0044B067 /* SizeOf.swift */; };
 		F58614B422A95FCF0044B067 /* default_shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F58614B322A95FCF0044B067 /* default_shaders.metal */; };
@@ -59,6 +61,8 @@
 		F548D89D22A920D90042A134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F548D89E22A920D90042A134 /* Gamedesign_game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Gamedesign_game.entitlements; sourceTree = "<group>"; };
 		F548D8A422A924D30042A134 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F55670EF22C12FF900075325 /* ring.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = ring.aiff; sourceTree = "<group>"; };
+		F55670F022C12FF900075325 /* hit.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = hit.aiff; sourceTree = "<group>"; };
 		F55D97D922BA939F00630B43 /* EndGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameViewController.swift; sourceTree = "<group>"; };
 		F58614B022A956EE0044B067 /* SizeOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeOf.swift; sourceTree = "<group>"; };
 		F58614B322A95FCF0044B067 /* default_shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = default_shaders.metal; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				F548D89822A920D90042A134 /* Assets.xcassets */,
 				F548D89D22A920D90042A134 /* Info.plist */,
 				F548D89E22A920D90042A134 /* Gamedesign_game.entitlements */,
+				F55670F022C12FF900075325 /* hit.aiff */,
+				F55670EF22C12FF900075325 /* ring.aiff */,
 			);
 			path = "Gamedesign game";
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F508D64422B1754300F80BFA /* clacon.ttf in Resources */,
+				F55670F122C12FF900075325 /* ring.aiff in Resources */,
+				F55670F222C12FF900075325 /* hit.aiff in Resources */,
 				F548D89922A920D90042A134 /* Assets.xcassets in Resources */,
 				F548D89C22A920D90042A134 /* Main.storyboard in Resources */,
 			);

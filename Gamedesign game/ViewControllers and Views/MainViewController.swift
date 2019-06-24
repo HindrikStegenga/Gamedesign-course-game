@@ -242,6 +242,7 @@ class MainViewController : NSViewController {
             let distY = abs(y - box.position.y)
             
             if sqrt(distX * distX + distY * distY) < 1.4 {
+                NSSound(named: "hit")!.play()
                 return true
             }
         }
@@ -263,6 +264,7 @@ class MainViewController : NSViewController {
             
             if sqrt(distX * distX + distY * distY) < 0.7 {
                 //Hit
+                NSSound(named: "ring")!.play()
                 hitBottleCount += 1
                 bottleCountLabel.stringValue = "Collected bottles: \(hitBottleCount)"
                 bottleDrawables.remove(at: index)
